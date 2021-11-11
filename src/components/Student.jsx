@@ -6,16 +6,22 @@ const Student = (props) => {
 
   return (
     <div className="student">
-      <img
-        className="image"
-        src={props.student.pic}
-        alt={`user ${props.student.firstName} ${props.student.lastName}`}
-      ></img>
-      <div className="fullname">{fullname}</div>
-      <div className="email">{`Email: ${props.student.email}`}</div>
-      <div className="company">{`Company: ${props.student.company}`}</div>
-      <div className="skill">{`Skill: ${props.student.skill}`}</div>
-      <div className="average">{`Average: ${average}%`}</div>
+      <div>
+        <img
+          className="image"
+          src={props.student.pic}
+          alt={`user ${props.student.firstName} ${props.student.lastName}`}
+        ></img>
+      </div>
+      <div className="details">
+        <div className="fullname">{fullname}</div>
+        <div className="gray">
+          <div className="email">{`Email: ${props.student.email}`}</div>
+          <div className="company">{`Company: ${props.student.company}`}</div>
+          <div className="skill">{`Skill: ${props.student.skill}`}</div>
+          <div className="average">{`Average: ${average}%`}</div>
+        </div>
+      </div>
     </div>
   );
 };
