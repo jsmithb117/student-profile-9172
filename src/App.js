@@ -7,6 +7,7 @@ import { Scrollbar } from 'smooth-scrollbar-react';
 
 function App() {
   const scrollbar = useRef(null);
+  const [students, setStudents] = useState(dummyData);
 
   useEffect(() => {
     const dataURL = "https://api.hatchways.io/assessment/students";
@@ -16,12 +17,11 @@ function App() {
       .catch((err) => console.error(err));
   });
 
-  const [students, setStudents] = useState(dummyData);
   return (
-    <div className="scroll-outer">
+    <div className="App">
       <Scrollbar ref={scrollbar} >
         <div className="scroll-container">
-          <div className="App" >
+          <div className="scroll-inner" >
             {students.map((student) => <Student key={student.firstName.concat(student.lastName)} student={student} />)}
           </div>
         </div>
