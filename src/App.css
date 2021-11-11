@@ -44,3 +44,32 @@ body{
   display: none !important; /* !important is used as a last resort to override inline CSS from the smooth-scrollbar-react library */
   opacity: 0;
 }
+
+.student {
+  display: flex;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 11px;
+}
+
+img {
+  height: 125px;
+  border: 1px solid lightgray;
+  border-radius: 50%;
+}
+
+.image {
+  padding-top: 20px;
+  padding-left: 24px;
+}
+
+.details {
+  padding-top: 10px;
+}
+
+.fullname {
+  padding-bottom: 11px;
+}
+
+.email, .company, .skill, .average {
+  padding-bottom: 6px;
+}

@@ -19,7 +19,6 @@ function App() {
   const [students, setStudents] = useState(dummyData);
   return (
     <div className="scroll-outer">
-
       <Scrollbar ref={scrollbar} >
         <div className="scroll-container">
           <div className="App" >
@@ -28,7 +27,6 @@ function App() {
         </div>
       </Scrollbar>
     </div>
-
   );
 }
 

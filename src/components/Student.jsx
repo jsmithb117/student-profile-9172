@@ -6,13 +6,12 @@ const Student = (props) => {
 
   return (
     <div className="student">
-      <div>
-        <img
-          className="image"
-          src={props.student.pic}
-          alt={`user ${props.student.firstName} ${props.student.lastName}`}
-        ></img>
-      </div>
+        <div className="image">
+          <img
+            src={props.student.pic}
+            alt={`user ${props.student.firstName} ${props.student.lastName}`}
+          ></img>
+        </div>
       <div className="details">
         <div className="fullname">{fullname}</div>
         <div className="gray">
