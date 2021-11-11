@@ -3,7 +3,6 @@ const Student = (props) => {
   const average = gradesInts.reduce((a, b) => a + b) / gradesInts.length;
   const fullname = `${props.student.firstName} ${props.student.lastName}`.toUpperCase();
 
-  console.log('fullname: ', fullname)
   return (
     <div className="student">
       <img
