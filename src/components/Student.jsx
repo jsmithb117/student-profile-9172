@@ -1,10 +1,10 @@
 const Student = (props) => {
-  console.log('props: ', props)
   const gradesInts = props.student.grades.map((grade) => parseInt(grade));
   const average = gradesInts.reduce((a, b) => a + b) / gradesInts.length;
   return (
     <div className="student">
       <img
+      className="image"
         src={props.student.pic}
         alt={`user ${props.student.firstName} ${props.student.lastName}`}
       ></img>
