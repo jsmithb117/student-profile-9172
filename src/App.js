@@ -20,11 +20,7 @@ function App() {
   return (
     <div className="scroll-outer">
 
-      <Scrollbar
-        ref={scrollbar}
-        alwaysShowTracks={false}
-        thumbMinSize={0}
-      >
+      <Scrollbar ref={scrollbar} >
         <div className="scroll-container">
           <div className="App" >
             {students.map((student) => <Student key={student.firstName.concat(student.lastName)} student={student} />)}
