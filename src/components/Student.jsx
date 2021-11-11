@@ -9,10 +9,11 @@ const Student = (props) => {
         alt={`user ${props.student.firstName} ${props.student.lastName}`}
       ></img>
       <div className="fullname">{`${props.student.firstName} ${props.student.lastName}`}</div>
-      <div className="email">{props.student.email}</div>
-      <div className="skill">{props.student.skill}</div>
+      <div className="email">{`Email: ${props.student.email}`}</div>
+      <div className="company">{`Company: ${props.student.company}`}</div>
+      <div className="skill">{`Skill: ${props.student.skill}`}</div>
       <div className="average">
-        {average}
+        {`${average}%`}
       </div>
     </div>
   );
