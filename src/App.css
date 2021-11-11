@@ -1,33 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap');
+
 body{
+  font-family: 'Raleway', sans-serif;
 	background-color:lightgray;
   text-align: center;
-  overflow-y: hidden;
 }
-
-.App::-webkit-scrollbar {
-  display: none; /* Hides scrollbar for Chrome */
-}
-
 
 .App {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 850px;
-  height: 850px;
-  border: 1px solid white;
-  text-align: center;
-  background-color: white;
-  border-radius: 10px;
-  overflow: auto;
-  -ms-overflow-style: none;  /* Hides scrollbar for IE and Edge */
-  scrollbar-width: none;  /* Hides scrollbar for Firefox */
+  height: 620px;
+  text-align: left;
 }
 
-.image {
-  width: 120x;
-  height: 120px;
-  border: 1px solid lightgray;
-  border-radius: 50%;
-};
+.scroll-outer {
+  position:relative;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  width: 850px;
+  max-width: 90vw;
+  max-height: 90vw;
+  height: 620px;
+  border: 1px solid rgb(134, 134, 134);
+  background-color: white;
+  border-radius: 10px;
+}
+
+.scrollbar-track {
+  display: none !important; /* !important is used as a last resort to override inline CSS from the smooth-scrollbar-react library */
+  opacity: 0;
+}
