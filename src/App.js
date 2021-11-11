@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import dummyData from './data/data';
 import Student from './components/Student';
+import SearchByName from './components/SearchByName';
 import './App.css';
 
 import { Scrollbar } from 'smooth-scrollbar-react';
@@ -8,6 +9,7 @@ import { Scrollbar } from 'smooth-scrollbar-react';
 function App() {
   const scrollbar = useRef(null);
   const [students, setStudents] = useState(dummyData);
+  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
     const dataURL = "https://api.hatchways.io/assessment/students";
@@ -19,6 +21,9 @@ function App() {
 
   return (
     <div className="App">
+      <div className="search">
+        <SearchByName searchText={searchText} setSearchText={setSearchText} />
+      </div>
       <Scrollbar ref={scrollbar} >
         <div className="scroll-container">
           <div className="scroll-inner" >

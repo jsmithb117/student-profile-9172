@@ -22,7 +22,7 @@ body{
 }
 
 .scroll-container {
-  height: 620px;
+  height: 600px;
   text-align: left;
 }
 
@@ -72,4 +72,17 @@ img {
 
 .email, .company, .skill, .average {
   padding-bottom: 6px;
+}
+
+.search {
+  display: flex;
+  border-bottom: 1px solid lightgray;
+}
+
+input {
+  width: 600px;
+  margin-left: 10px;
+  background: transparent;
+  border: none;
+  outline: none;
 }
