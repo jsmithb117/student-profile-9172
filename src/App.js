@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import dummyData from './data/data';
+import Student from './components/Student';
 import './App.css';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
   const [students, setStudents] = useState(dummyData);
   return (
     <div className="App" >
-
+      {students.map((student) => <Student key={student.firstName.concat(student.lastName)} student={student} />)}
     </div>
   );
 }
