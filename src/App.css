@@ -141,3 +141,14 @@ button {
 .score-order {
   margin-right: 25px;
 }
+
+.tag {
+  color: black;
+  display: inline-block;
+  border-radius: 3px;
+  text-align: center;
+  height: 25px;
+  padding: 5px 10px 0px 10px;
+  margin-right: 5px;
+  background-color: lightgray;
+}
