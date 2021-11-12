@@ -5,6 +5,7 @@ const SearchByName = (props) => {
         <input
           type="text"
           value={props.searchText}
+          placeholder={"Search by name"}
           onChange={(e) => props.setSearchText(e.target.value)}
         ></input>
       </form>

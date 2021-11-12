@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;800&display=swap');
 
 
 
@@ -22,11 +22,13 @@ body{
 }
 
 .scroll-container {
-  height: 600px;
+  height: 560px;
+  min-height: 560px;
   text-align: left;
 }
 
 .App {
+  min-height: 620px;
   position:relative;
   top: 10%;
   left: 50%;
@@ -74,15 +76,36 @@ img {
   padding-bottom: 6px;
 }
 
-.search {
+.search-by-name {
   display: flex;
+  margin-top: 10px;
+  /* border-bottom: 1px solid lightgray; */
+}
+
+input:focus {
+  /* margin-left: 20px; */
+  border-bottom: 1px solid black;
+}
+input:not(:focus) {
+  /* margin-left: 20px; */
   border-bottom: 1px solid lightgray;
 }
 
 input {
-  width: 600px;
-  margin-left: 10px;
+  max-width: 800px;
+  width: 100%;
+  /* margin-left: 10px; */
   background: transparent;
   border: none;
   outline: none;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  color: gray;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+form {
+  width: 100%;
 }
