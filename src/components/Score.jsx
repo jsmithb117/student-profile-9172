@@ -1,6 +1,11 @@
 const Score = (props) => (
   <div className="score">
-    {`Test ${props.order}:     ${props.score}%`}
+    <span className="score-order">
+      {`Test ${props.order}:`}
+    </span>
+    <span className="score-score">
+      {`${props.score}%`}
+    </span>
   </div>
 );
 
