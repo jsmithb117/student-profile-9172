@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Scrollbar } from 'smooth-scrollbar-react';
 import dummyData from './data/data';
 import './App.css';
@@ -13,7 +13,13 @@ function App() {
     const dataURL = "https://api.hatchways.io/assessment/students";
     fetch(dataURL)
       .then((response) => response.json())
-      .then((json) => { setStudents(json.students) })
+      .then((json) => {
+        const studentsWithExpandedProperty = json.students.map((student) => ({
+          ...student,
+          expanded: false,
+        }));
+        setStudents(studentsWithExpandedProperty);
+      })
       .catch((err) => console.error(err));
   });
 
