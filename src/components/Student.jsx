@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Score from "./Score";
+import Tag from "./Tag";
 
 const Student = (props) => {
   const gradesInts = props.student.grades.map((grade) => parseInt(grade));
@@ -9,11 +10,18 @@ const Student = (props) => {
   const includesSearchText = fullname.includes(props.searchText.toUpperCase());
   const hasSearchText = props.searchText.length === 0 ? false : true;
   const [expanded, setExpanded] = useState(false);
+  const [tagDisplay, setTagDisplay] = useState("");
   const collapsedDisplay = "+";
   const expandedDisplay = "-";
 
   const toggleExpanded = () => {
     setExpanded(!expanded);
+  };
+
+  const addTag = (event) => {
+    event.preventDefault();
+    props.setStudentTag(props.student, tagDisplay);
+    setTagDisplay('');
   };
 
   if (!hasSearchText || includesSearchText) {
@@ -55,6 +63,23 @@ const Student = (props) => {
                     score={parseInt(score)}
                   />
                 ))}
+            </div>
+            <div className="tags">
+              {props.student.tags.map((tag) => (
+                <Tag key={tag} tag={tag} addTag={addTag} />
+              ))}
+              <div className="addtag">
+                <form onSubmit={(e) => addTag(e)}>
+                  <input
+                    type="text"
+                    value={tagDisplay}
+                    placeholder={"Add a tag"}
+                    onChange={(e) => {
+                      setTagDisplay(e.target.value);
+                    }}
+                  ></input>
+                </form>
+              </div>
             </div>
           </div>
         </div>
