@@ -3,10 +3,10 @@ import Details from "./Details";
 const Student = (props) => {
   const fullname =
     `${props.student.firstName} ${props.student.lastName}`.toUpperCase();
-  const includesSearchText = fullname.includes(props.searchText.toUpperCase());
-  const hasSearchText = props.searchText.length === 0 ? false : true;
+  const includesSearchNameText = fullname.includes(props.searchNameText.toUpperCase());
+  const hasSearchNameText = props.searchNameText.length === 0 ? false : true;
 
-  if (!hasSearchText || includesSearchText) {
+  if (!hasSearchNameText || includesSearchNameText) {
     return (
       <div className="student">
         <div className="image">

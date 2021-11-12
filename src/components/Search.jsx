@@ -1,11 +1,11 @@
-const SearchByName = (props) => {
+const Search = (props) => {
   return (
-    <div className="search-by-name">
+    <div className={props.class}>
       <form>
         <input
           type="text"
           value={props.searchText}
-          placeholder={"Search by name"}
+          placeholder={props.placeHolder}
           onChange={(e) => props.setSearchText(e.target.value)}
         ></input>
       </form>
@@ -13,4 +13,4 @@ const SearchByName = (props) => {
   );
 };
 
-export default SearchByName;
+export default Search;

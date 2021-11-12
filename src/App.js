@@ -3,11 +3,11 @@ import { Scrollbar } from 'smooth-scrollbar-react';
 import dummyData from './data/data';
 import './App.css';
 import Student from './components/Student';
-import SearchByName from './components/SearchByName';
+import Search from './components/Search';
 
 function App() {
   const [students, setStudents] = useState(dummyData);
-  const [searchText, setSearchText] = useState('');
+  const [searchNameText, setSearchNameText] = useState('');
 
   useEffect(() => {
     const dataURL = "https://api.hatchways.io/assessment/students";
@@ -38,7 +38,7 @@ function App() {
     <Student
       key={student.id}
       student={student}
-      searchText={searchText}
+      searchNameText={searchNameText}
       setStudentTag={setStudentTag}
     />
   ));
@@ -46,7 +46,12 @@ function App() {
   return (
     <div className="App">
       <div className="search">
-        <SearchByName searchText={searchText} setSearchText={setSearchText} />
+        <Search
+          class="search-by-name"
+          placeHolder="Search by name"
+          searchText={searchNameText}
+          setSearchText={setSearchNameText}
+        />
       </div>
       <Scrollbar>
         <div className="scroll-container">
