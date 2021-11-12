@@ -3,6 +3,7 @@ import Score from "./Score";
 import Tags from "./Tags";
 import Name from './Name';
 import Email from './Email';
+import Company from './Company';
 
 const Details = (props) => {
   const [expanded, setExpanded] = useState(false);
@@ -18,7 +19,7 @@ const Details = (props) => {
       <Name fullname={props.fullName}setExpanded={setExpanded} expanded={expanded} />
       <div className="info">
         <Email email={props.student.email} />
-        <div className="company">{`Company: ${props.student.company}`}</div>
+        <Company company={props.student.company} />
         <div className="skill">{`Skill: ${props.student.skill}`}</div>
         <div className="average">{`Average: ${average}%`}</div>
         <div className="scores">
