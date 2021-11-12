@@ -27,7 +27,7 @@ function App() {
       <Scrollbar ref={scrollbar} >
         <div className="scroll-container">
           <div className="scroll-inner" >
-            {students.map((student) => <Student key={student.firstName.concat(student.lastName)} student={student} />)}
+            {students.map((student) => <Student key={student.firstName.concat(student.lastName)} student={student} searchText={searchText} />)}
           </div>
         </div>
       </Scrollbar>
