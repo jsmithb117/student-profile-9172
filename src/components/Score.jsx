@@ -1,7 +1,7 @@
 const Score = (props) => (
-  <span className="score">
-    {`Test ${props.index}:     ${props.score}%`}
-  </span>
+  <div className="score">
+    {`Test ${props.order}:     ${props.score}%`}
+  </div>
 );
 
 export default Score;
