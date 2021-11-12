@@ -1,13 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
+import { Scrollbar } from 'smooth-scrollbar-react';
 import dummyData from './data/data';
+import './App.css';
 import Student from './components/Student';
 import SearchByName from './components/SearchByName';
-import './App.css';
-
-import { Scrollbar } from 'smooth-scrollbar-react';
 
 function App() {
-  const scrollbar = useRef(null);
   const [students, setStudents] = useState(dummyData);
   const [searchText, setSearchText] = useState('');
 
@@ -24,7 +22,7 @@ function App() {
       <div className="search">
         <SearchByName searchText={searchText} setSearchText={setSearchText} />
       </div>
-      <Scrollbar ref={scrollbar} >
+      <Scrollbar >
         <div className="scroll-container">
           <div className="scroll-inner" >
             {students.map((student) => <Student key={student.firstName.concat(student.lastName)} student={student} searchText={searchText} />)}
