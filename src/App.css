@@ -7,7 +7,7 @@ body{
 }
 
 .info {
-  color: gray;
+  color: black;
   font-size: 15px;
   font-weight: 400;
   padding-left: 70px;
@@ -136,6 +136,7 @@ button {
 
 .scores {
   margin-top: 10px;
+  padding-bottom: 10px;
 }
 
 .score-order {
