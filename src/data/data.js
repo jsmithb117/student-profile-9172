@@ -10,6 +10,7 @@ const dummyData = [{
   "skill": "Skill",
   "index": 0,
   "tags": [],
+  "fullname": 'FIRSTNAME LASTNAME'
 }];
 
 export default dummyData;

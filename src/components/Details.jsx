@@ -12,7 +12,7 @@ const Details = (props) => {
 
   return (
     <div className="details">
-      <Name fullname={props.fullName} setExpanded={setExpanded} expanded={expanded} />
+      <Name fullname={props.student.fullname} setExpanded={setExpanded} expanded={expanded} />
       <div className="info">
         <Detail class='email' title='Email' value={props.student.email} />
         <Detail class='company' title='Company' value={props.student.company} />

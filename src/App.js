@@ -7,7 +7,8 @@ import Search from './components/Search';
 
 function App() {
   const [students, setStudents] = useState(dummyData);
-  const [searchNameText, setSearchNameText] = useState('');
+  const [searchName, setSearchName] = useState(null);
+  const [searchTag, setSearchTag] = useState(null);
 
   useEffect(() => {
     const dataURL = "https://api.hatchways.io/assessment/students";
@@ -15,11 +16,15 @@ function App() {
       .then((response) => response.json())
       .then((json) => {
         setStudents(
-          json.students.map((student, index) => ({
+          json.students.map((student, index) => {
+            const fullname = student.firstName.concat(' ', student.lastName).toUpperCase();
+            return {
             ...student,
             index,
             tags: [],
-          }))
+            fullname,
+          }
+        })
         );
       })
       .catch((err) => console.error(err));
@@ -34,11 +39,32 @@ function App() {
     setStudents(newStudents);
   };
 
-  const mappedStudents = students.map((student) => (
+  const filteredStudents = students.filter((student) => {
+    const passesNameSearch = searchName && student.fullname.includes(searchName.toUpperCase());
+    const tagsThatPass = student.tags.filter((tag) => tag.includes(searchTag));
+    const passesTagSearch = searchTag && tagsThatPass.length > 0; //tag search is case sensitive
+
+    if (!searchName && !searchTag) {
+      return true;
+    }
+    if (searchName && !searchTag) {
+      return passesNameSearch;
+    }
+    if (!searchName && searchTag) {
+      return passesTagSearch;
+    }
+    if (searchName &&  searchTag) {
+      return passesNameSearch && passesTagSearch;
+    }
+    return false;
+  })
+
+  const mappedStudents = filteredStudents.map((student) => (
     <Student
       key={student.id}
       student={student}
-      searchNameText={searchNameText}
+      searchName={searchName}
+      searchTag={searchTag}
       setStudentTag={setStudentTag}
     />
   ));
@@ -49,8 +75,14 @@ function App() {
         <Search
           class="search-by-name"
           placeHolder="Search by name"
-          searchText={searchNameText}
-          setSearchText={setSearchNameText}
+          searchText={searchName}
+          setSearchText={setSearchName}
+        />
+        <Search
+          class="search-by-tag"
+          placeHolder="Search by tag"
+          searchText={searchTag}
+          setSearchText={setSearchTag}
         />
       </div>
       <Scrollbar>

@@ -4,7 +4,7 @@ const Search = (props) => {
       <form>
         <input
           type="text"
-          value={props.searchText}
+          value={props.searchText || ''}
           placeholder={props.placeHolder}
           onChange={(e) => props.setSearchText(e.target.value)}
         ></input>
