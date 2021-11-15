@@ -42,9 +42,9 @@ test('renders "Search by Tag" form', () => {
   expect(form).toBeDefined();
 });
 
-test('renders name in all caps', async () => {
-  const { queryByLabelText, queryByText, findByText } = render(<App url={ '/test' } />);
-  const upperCase = await findByText(/TESTFIRSTNAME TESTLASTNAME/);
+test('renders name in all caps', () => {
+  const { queryByText } = render(<App url={ '/test' } />);
+  const upperCase = queryByText(/TESTFIRSTNAME TESTLASTNAME/);
   expect(upperCase).toBeDefined()
 });
 
@@ -55,26 +55,26 @@ test('renders email in format given', () => {
 });
 
 test('renders company name in format given', () => {
-  const {queryByLabelText } = render(<App url={ '/test' } />);
+  const { queryByLabelText } = render(<App url={ '/test' } />);
   const company = queryByLabelText(/TestCompany/i);
   expect(company).toBeDefined();
 });
 
 test('renders skill in format given', () => {
-  const {queryByLabelText } = render(<App url={ '/test' } />);
+  const { queryByLabelText } = render(<App url={ '/test' } />);
   const skill = queryByLabelText(/TestSkill/i);
   expect(skill).toBeDefined();
 });
 
-test('renders average in proper format', async () => {
+test('renders average in proper format', () => {
   const {queryByText, findByText} = render(<App url={ '/test' } />);
-  const averageParent = await findByText(/64%/);
+  const averageParent = queryByText(/64%/);
 
   expect(averageParent).toBeDefined();
 });
 
 test('filters list when an entry is made in "Search by name" form and no entry is made in "Search by tag form', async () => {
-  const { queryByText, findByText, queryByPlaceholderText, findAllByText } = render(<App url={ '/test' } />);
+  const { queryByText, queryByPlaceholderText, findAllByText } = render(<App url={ '/test' } />);
   const upperCase1 = await findAllByText(/TESTFIRSTNAME TESTLASTNAME/);
   expect(upperCase1.length).toBe(1);
 
@@ -123,13 +123,13 @@ test('filters list when an entry is made in "Search by name" form and an entry i
 });
 
 test('renders tags', async () => {
-  const { queryByText, findByText, queryByPlaceholderText } = render(<App url={ '/test' } />);
+  const { findByText } = render(<App url={ '/test' } />);
   const existingTag = await findByText(/tag1/);
   expect(existingTag).toBeDefined();
 })
 
 test('adds a tag to a user when a unique tag is made in "Add a tag" form', async () => {
-  const { queryByText, findByText, queryByPlaceholderText, queryAllByText, findAllByText } = render(<App url={ '/test' } />);
+  const { queryByPlaceholderText, queryAllByText, findAllByText } = render(<App url={ '/test' } />);
   const existingTag = await findAllByText(/tag/);
   expect(existingTag.length).toBe(2);
 
@@ -139,7 +139,7 @@ test('adds a tag to a user when a unique tag is made in "Add a tag" form', async
 });
 
 test('does not add a tag that already exists', async () => {
-  const { queryByText, findByText, queryByPlaceholderText, findAllByText } = render(<App url={ '/test' } />);
+  const { queryByPlaceholderText, findAllByText } = render(<App url={ '/test' } />);
   const existingTag = await findAllByText(/tag1/);
   expect(existingTag.length).toBe(1);
 
@@ -148,13 +148,12 @@ test('does not add a tag that already exists', async () => {
   expect(newTags.length).toBe(1);
 });
 
-test('expands scores when "+" button is clicked and collapses scores when "-" button is clicked', async () => {
-  const { queryByText, findAllByPlaceholderText, queryAllByText, findAllByText, findAllByRole } = render(<App url={ '/test' } />);
-  const existingTag = await findAllByText(/tag1/);
-
+test('expands scores when "+" button is clicked and collapses scores when "-" button is clicked', () => {
+  const { queryByText, queryAllByText } = render(<App url={ '/test' } />);
   userEvent.click(queryByText('+'));
-  const tests1 = await findAllByText(/%/);
+  const tests1 = queryAllByText(/%/);
   expect(tests1.length).toBe(3);
+
   userEvent.click(queryByText('-'));
   const tests2 = queryAllByText(/%/);
   expect(tests2.length).toBe(1);
