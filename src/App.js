@@ -5,14 +5,14 @@ import './App.css';
 import Student from './components/Student';
 import Search from './components/Search';
 
-function App() {
+function App(props) {
   const [students, setStudents] = useState(dummyData);
   const [searchName, setSearchName] = useState(null);
   const [searchTag, setSearchTag] = useState(null);
 
   useEffect(() => {
-    const dataURL = "https://api.hatchways.io/assessment/students";
-    fetch(dataURL)
+    // const dataURL = "https://api.hatchways.io/assessment/students";
+    fetch(props.url)
       .then((response) => response.json())
       .then((json) => {
         setStudents(
@@ -28,7 +28,7 @@ function App() {
         );
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [props.url]);
 
   const setStudentTag = (student, tag) => {
     if (!student.tags.includes(tag)) {

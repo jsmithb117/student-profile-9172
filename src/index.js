@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App url='https://api.hatchways.io/assessment/students'/>
   </React.StrictMode>,
   document.getElementById('root')
 );
