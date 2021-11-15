@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import { Scrollbar } from 'smooth-scrollbar-react';
 import dummyData from './data/data';
 import './App.css';
@@ -9,10 +9,11 @@ function App(props) {
   const [students, setStudents] = useState(dummyData);
   const [searchName, setSearchName] = useState(null);
   const [searchTag, setSearchTag] = useState(null);
+  const controller = new AbortController();
+  const { signal } = controller;
 
   useEffect(() => {
-    // const dataURL = "https://api.hatchways.io/assessment/students";
-    fetch(props.url)
+    fetch(props.url, { signal })
       .then((response) => response.json())
       .then((json) => {
         setStudents(
@@ -27,8 +28,16 @@ function App(props) {
         })
         );
       })
-      .catch((err) => console.error(err));
-  }, [props.url]);
+      .catch((err) => {
+        if (err.name !== 'AbortError') {
+          console.error(err)
+        }
+      });
+    return () => {
+      controller.abort();
+    }
+  }, [props.url, signal]);
+
 
   const setStudentTag = (student, tag) => {
     if (!student.tags.includes(tag)) {
