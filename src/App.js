@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Scrollbar } from 'smooth-scrollbar-react';
 import dummyData from './data/data';
 import './App.css';
@@ -9,7 +9,7 @@ function App(props) {
   const [students, setStudents] = useState(dummyData);
   const [searchName, setSearchName] = useState(null);
   const [searchTag, setSearchTag] = useState(null);
-  const controller = new AbortController();
+  const controller = useMemo(() => (new AbortController()), []);
   const { signal } = controller;
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function App(props) {
     return () => {
       controller.abort();
     }
-  }, [props.url, signal]);
+  }, [ props.url, signal, controller ]);
 
 
   const setStudentTag = (student, tag) => {
